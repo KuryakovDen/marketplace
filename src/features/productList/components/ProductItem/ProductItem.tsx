@@ -1,6 +1,5 @@
 import { MouseEventHandler, useCallback } from 'react'
 import styles from './ProductItem.module.css'
-// import ProductImage from '../../../../shared/assets/images/test_image.jpg'
 
 type ProductItemProps = {
   id: number;
@@ -12,15 +11,20 @@ type ProductItemProps = {
   onProductClick?: MouseEventHandler<HTMLDivElement>
 }
 
-function ProductItem({ title, description, price, onProductClick }: ProductItemProps) {
+function ProductItem({ title, description, price, onProductClick, onCartAdd }: ProductItemProps) {
   const onClick = useCallback(() => onProductClick, [])
 
+  const onAddCartButtonClick = useCallback(() => onCartAdd, [])
+
   return <div className={styles.root} onClick={onClick}>
-    {/*<ProductImage />*/}
     <strong>{title}</strong>
     <span>{description}</span>
-    <span>{price}</span>
+    <div className={styles.priceWrapper}>
+      <b className={styles.price}>{price}</b>
+      {/* TODO Заменить на компонент IconButton */}
+      <button className={styles.addButton} onClick={onAddCartButtonClick}>+</button>
+    </div>
   </div>
 }
 
-export default ProductItem;
+export default ProductItem
