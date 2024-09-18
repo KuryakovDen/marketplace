@@ -1,6 +1,7 @@
 .root {
     display: flex;
     flex-direction: column;
+    position: relative;
     box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
     border-radius: 8px;
     padding: 8px;
@@ -9,6 +10,36 @@
         box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
         cursor: pointer;
     }
+}
+
+.textWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 14px;
+}
+
+.description {
+    color: gray;
+    font-size: 12px;
+}
+
+.favouriteButton {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 8px;
+    border-radius: 50%;
+    border: none;
+    width: 24px;
+    height: 24px;
+}
+
+.favourite {
+    background-color: pink;
 }
 
 .priceWrapper {

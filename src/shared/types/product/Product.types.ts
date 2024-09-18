@@ -16,5 +16,6 @@ export type Product = {
   price: ProductPrice;
   categoryId: number;
   availableCount: number;
+  isFavourite: boolean;
   properties: ProductProperty[]
 }

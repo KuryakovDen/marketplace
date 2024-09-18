@@ -9,6 +9,7 @@ export const MOCK_PRODUCTS: Product[] = [
       'amount': 10,
       'currency': '$'
     },
+    'isFavourite': true,
     'categoryId': 1,
     'availableCount': 5,
     'properties': [{'title': 'Цвет', 'value': 'Черный'}]
@@ -21,6 +22,7 @@ export const MOCK_PRODUCTS: Product[] = [
       'amount': 15,
       'currency': '$'
     },
+    'isFavourite': false,
     'categoryId': 2,
     'availableCount': 3,
     'properties': [{'title': 'Цвет', 'value': 'Белый'}]
@@ -33,6 +35,7 @@ export const MOCK_PRODUCTS: Product[] = [
       'amount': 20,
       'currency': '$'
     },
+    'isFavourite': false,
     'categoryId': 1,
     'availableCount': 10,
     'properties': [{'title': 'Цвет', 'value': 'Синий'}]
@@ -45,6 +48,7 @@ export const MOCK_PRODUCTS: Product[] = [
       'amount': 25,
       'currency': '$'
     },
+    'isFavourite': false,
     'categoryId': 3,
     'availableCount': 2,
     'properties': [{'title': 'Цвет', 'value': 'Красный'}]
@@ -57,6 +61,7 @@ export const MOCK_PRODUCTS: Product[] = [
       'amount': 30,
       'currency': '$'
     },
+    'isFavourite': false,
     'categoryId': 2,
     'availableCount': 8,
     'properties': [{'title': 'Цвет', 'value': 'Зеленый'}]
@@ -69,6 +74,7 @@ export const MOCK_PRODUCTS: Product[] = [
       'amount': 4,
       'currency': '$'
     },
+    'isFavourite': false,
     'categoryId': 2,
     'availableCount': 13,
     'properties': [{'title': 'Цвет', 'value': 'Зеленый'}]
@@ -81,6 +87,7 @@ export const MOCK_PRODUCTS: Product[] = [
       'amount': 23,
       'currency': '$'
     },
+    'isFavourite': false,
     'categoryId': 4,
     'availableCount': 11,
     'properties': [{'title': 'Цвет', 'value': 'Зеленый'}]
@@ -93,6 +100,7 @@ export const MOCK_PRODUCTS: Product[] = [
       'amount': 3,
       'currency': '$'
     },
+    'isFavourite': false,
     'categoryId': 1,
     'availableCount': 2,
     'properties': [{'title': 'Цвет', 'value': 'Зеленый'}]
@@ -105,6 +113,7 @@ export const MOCK_PRODUCTS: Product[] = [
       'amount': 46,
       'currency': '$'
     },
+    'isFavourite': false,
     'categoryId': 3,
     'availableCount': 5,
     'properties': [{'title': 'Цвет', 'value': 'Зеленый'}]
@@ -117,6 +126,7 @@ export const MOCK_PRODUCTS: Product[] = [
       'amount': 12,
       'currency': '$'
     },
+    'isFavourite': false,
     'categoryId': 6,
     'availableCount': 4,
     'properties': [{'title': 'Цвет', 'value': 'Зеленый'}]
@@ -129,6 +139,7 @@ export const MOCK_PRODUCTS: Product[] = [
       'amount': 125,
       'currency': '$'
     },
+    'isFavourite': false,
     'categoryId': 3,
     'availableCount': 1,
     'properties': [{'title': 'Цвет', 'value': 'Зеленый'}]
@@ -141,6 +152,7 @@ export const MOCK_PRODUCTS: Product[] = [
       'amount': 20,
       'currency': '$'
     },
+    'isFavourite': false,
     'categoryId': 2,
     'availableCount': 7,
     'properties': [{'title': 'Цвет', 'value': 'Зеленый'}]
@@ -153,6 +165,7 @@ export const MOCK_PRODUCTS: Product[] = [
       'amount': 65,
       'currency': '$'
     },
+    'isFavourite': false,
     'categoryId': 6,
     'availableCount': 14,
     'properties': [{'title': 'Цвет', 'value': 'Зеленый'}]
@@ -165,6 +178,7 @@ export const MOCK_PRODUCTS: Product[] = [
       'amount': 70,
       'currency': '$'
     },
+    'isFavourite': false,
     'categoryId': 3,
     'availableCount': 60,
     'properties': [{'title': 'Цвет', 'value': 'Зеленый'}]
@@ -177,6 +191,7 @@ export const MOCK_PRODUCTS: Product[] = [
       'amount': 45,
       'currency': '$'
     },
+    'isFavourite': false,
     'categoryId': 1,
     'availableCount': 16,
     'properties': [{'title': 'Цвет', 'value': 'Зеленый'}]
@@ -189,6 +204,7 @@ export const MOCK_PRODUCTS: Product[] = [
       'amount': 55,
       'currency': '$'
     },
+    'isFavourite': false,
     'categoryId': 4,
     'availableCount': 2,
     'properties': [{'title': 'Цвет', 'value': 'Зеленый'}]
@@ -201,6 +217,7 @@ export const MOCK_PRODUCTS: Product[] = [
       'amount': 35,
       'currency': '$'
     },
+    'isFavourite': false,
     'categoryId': 1,
     'availableCount': 14,
     'properties': [{'title': 'Цвет', 'value': 'Зеленый'}]
@@ -213,6 +230,7 @@ export const MOCK_PRODUCTS: Product[] = [
       'amount': 10,
       'currency': '$'
     },
+    'isFavourite': false,
     'categoryId': 6,
     'availableCount': 40,
     'properties': [{'title': 'Цвет', 'value': 'Зеленый'}]
@@ -225,6 +243,7 @@ export const MOCK_PRODUCTS: Product[] = [
       'amount': 80,
       'currency': '$'
     },
+    'isFavourite': false,
     'categoryId': 3,
     'availableCount': 15,
     'properties': [{'title': 'Цвет', 'value': 'Зеленый'}]
@@ -237,6 +256,7 @@ export const MOCK_PRODUCTS: Product[] = [
       'amount': 100,
       'currency': '$'
     },
+    'isFavourite': false,
     'categoryId': 5,
     'availableCount': 5,
     'properties': [{'title': 'Цвет', 'value': 'Зеленый'}]
