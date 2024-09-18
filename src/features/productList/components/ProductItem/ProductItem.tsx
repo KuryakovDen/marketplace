@@ -20,13 +20,15 @@ type ProductItemProps = {
 function ProductItem({ title, description, price, isFavourite, onFavouriteClick, onProductClick, onCartAdd }: ProductItemProps) {
   return <div className={styles.root} onClick={onProductClick}>
     <div className={styles.textWrapper}>
+      {/* TODO Добавить картинку в тип Product */}
+      <img src="https://fakeimg.pl/120x160/?text=Hello" alt={'Product image'} />
       <strong className={styles.title}>{title}</strong>
       <span className={styles.description}>{description}</span>
       {/* TODO Заменить на компонент IconButton */}
       <button className={classNames(styles.favouriteButton, {
-        [styles.favourite]: isFavourite
+        [styles.favourite]: isFavourite,
       })} onClick={onFavouriteClick}>
-        {isFavourite ? <MdFavorite /> : <GrFavorite /> }
+        {isFavourite ? <MdFavorite /> : <GrFavorite />}
       </button>
     </div>
     <div className={styles.priceWrapper}>

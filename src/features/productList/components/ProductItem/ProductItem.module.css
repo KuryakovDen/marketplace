@@ -21,6 +21,7 @@
 
 .title {
     font-size: 14px;
+    margin-top: var(--spacing2x);
 }
 
 .description {
@@ -33,7 +34,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    right: var(--spacing4x);
+    right: var(--spacing6x);
+    top: var(--spacing6x);
     border-radius: 50%;
     border: none;
     width: 24px;
