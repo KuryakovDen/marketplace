@@ -1,9 +1,19 @@
-import ProductList from '../features/productList/components/ProductList/ProductList.tsx'
+import { Routes, Route, BrowserRouter } from 'react-router-dom'
+import MainPage from '../pages/MainPage.tsx'
+import { AppRoute } from '../shared/consts/appRoutes.ts'
+import ProductPage from '../pages/ProductPage.tsx'
 
 function App() {
   return (
-    // TODO Временно отображаем список товаров здесь
-    <ProductList />
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<MainPage />} />
+        <Route
+          path={AppRoute.Product}
+          element={<ProductPage />}
+        />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
