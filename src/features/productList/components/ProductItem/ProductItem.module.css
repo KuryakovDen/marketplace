@@ -4,12 +4,12 @@
     justify-content: space-between;
     position: relative;
     min-height: 104px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
-    border-radius: 8px;
-    padding: 8px;
+    box-shadow: var(--boxShadowDefault);
+    border-radius: var(--borderRadiusXs);
+    padding: var(--spacing4x);
 
     &:hover {
-        box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+        box-shadow: var(--boxShadowHover);
         cursor: pointer;
     }
 }
@@ -24,7 +24,7 @@
 }
 
 .description {
-    color: gray;
+    color: var(--grayPrimary);
     font-size: 12px;
 }
 
@@ -33,15 +33,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    right: 8px;
+    right: var(--spacing4x);
     border-radius: 50%;
     border: none;
     width: 24px;
     height: 24px;
+    cursor: pointer;
 }
 
 .favourite {
-    background-color: pink;
+    background-color: var(--pinkPrimary);
 }
 
 .priceWrapper {
@@ -59,11 +60,11 @@
     align-items: center;
     justify-content: center;
     border: none;
-    background-color: cornflowerblue;
+    background-color: var(--cornflowerBlue);
     width: 24px;
     height: 24px;
-    border-radius: 8px;
-    color: white;
+    border-radius: var(--borderRadiusXs);
+    color: var(--whitePrimary);
 
     &:hover {
         cursor: pointer;
