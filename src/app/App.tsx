@@ -7,7 +7,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<MainPage />} />
+        <Route path={AppRoute.Main} element={<MainPage />} index />
         <Route
           path={AppRoute.Product}
           element={<ProductPage />}
