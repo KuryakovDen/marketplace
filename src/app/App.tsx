@@ -1,6 +1,9 @@
+import ProductList from '../features/productList/components/ProductList/ProductList.tsx'
+
 function App() {
   return (
-    <span>App</span>
+    // TODO Временно отображаем список товаров здесь
+    <ProductList />
   )
 }
 

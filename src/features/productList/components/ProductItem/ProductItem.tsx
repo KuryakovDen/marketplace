@@ -1,4 +1,6 @@
 import { MouseEventHandler, useCallback } from 'react'
+import styles from './ProductItem.module.css'
+// import ProductImage from '../../../../shared/assets/images/test_image.jpg'
 
 type ProductItemProps = {
   id: number;
@@ -13,7 +15,8 @@ type ProductItemProps = {
 function ProductItem({ title, description, price, onProductClick }: ProductItemProps) {
   const onClick = useCallback(() => onProductClick, [])
 
-  return <div onClick={onClick}>
+  return <div className={styles.root} onClick={onClick}>
+    {/*<ProductImage />*/}
     <strong>{title}</strong>
     <span>{description}</span>
     <span>{price}</span>
