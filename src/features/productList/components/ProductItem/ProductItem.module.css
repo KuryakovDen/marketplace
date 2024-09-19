@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    min-height: 104px;
+    min-height: 250px;
     box-shadow: var(--boxShadowDefault);
     border-radius: var(--borderRadiusXs);
     padding: var(--spacing4x);

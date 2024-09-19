@@ -3,6 +3,7 @@ import { Product } from '../../../shared/types/product/Product.types.ts'
 export const MOCK_PRODUCTS: Product[] = [
   {
     'id': 1,
+    'image': 'https://fakeimg.pl/120x160/?text=Hello',
     'title': 'Product One',
     'description': 'Description for product one.',
     'price': {
@@ -16,6 +17,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     'id': 2,
+    'image': 'https://fakeimg.pl/120x160/?text=Hello',
     'title': 'Product Two',
     'description': 'Description for product two.',
     'price': {
@@ -29,6 +31,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     'id': 3,
+    'image': 'https://fakeimg.pl/120x160/?text=Hello',
     'title': 'Product Three',
     'description': 'Description for product three.',
     'price': {
@@ -42,6 +45,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     'id': 4,
+    'image': 'https://fakeimg.pl/120x160/?text=Hello',
     'title': 'Product Four',
     'description': 'Description for product four.',
     'price': {
@@ -55,6 +59,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     'id': 5,
+    'image': 'https://fakeimg.pl/120x160/?text=Hello',
     'title': 'Product Five',
     'description': 'Description for product five.',
     'price': {
@@ -68,6 +73,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     'id': 6,
+    'image': 'https://fakeimg.pl/120x160/?text=Hello',
     'title': 'Product Six',
     'description': 'Description for product six.',
     'price': {
@@ -81,6 +87,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     'id': 7,
+    'image': 'https://fakeimg.pl/120x160/?text=Hello',
     'title': 'Product Seven',
     'description': 'Description for product seven.',
     'price': {
@@ -94,6 +101,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     'id': 8,
+    'image': 'https://fakeimg.pl/120x160/?text=Hello',
     'title': 'Product Eight',
     'description': 'Description for product eight.',
     'price': {
@@ -107,6 +115,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     'id': 9,
+    'image': 'https://fakeimg.pl/120x160/?text=Hello',
     'title': 'Product Nine',
     'description': 'Description for product nine.',
     'price': {
@@ -120,6 +129,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     'id': 10,
+    'image': 'https://fakeimg.pl/120x160/?text=Hello',
     'title': 'Product Ten',
     'description': 'Description for product ten.',
     'price': {
@@ -133,6 +143,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     'id': 11,
+    'image': 'https://fakeimg.pl/120x160/?text=Hello',
     'title': 'Product Eleven',
     'description': 'Description for product eleven.',
     'price': {
@@ -146,6 +157,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     'id': 12,
+    'image': 'https://fakeimg.pl/120x160/?text=Hello',
     'title': 'Product Twelve',
     'description': 'Description for product twelve.',
     'price': {
@@ -159,6 +171,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     'id': 13,
+    'image': 'https://fakeimg.pl/120x160/?text=Hello',
     'title': 'Product Thirteen',
     'description': 'Description for product thirteen.',
     'price': {
@@ -172,6 +185,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     'id': 14,
+    'image': 'https://fakeimg.pl/120x160/?text=Hello',
     'title': 'Product fourteen',
     'description': 'Description for product fourteen.',
     'price': {
@@ -185,6 +199,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     'id': 15,
+    'image': 'https://fakeimg.pl/120x160/?text=Hello',
     'title': 'Product Fifteen',
     'description': 'Description for product fifteen.',
     'price': {
@@ -198,6 +213,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     'id': 16,
+    'image': 'https://fakeimg.pl/120x160/?text=Hello',
     'title': 'Product Sixteen',
     'description': 'Description for product sixteen.',
     'price': {
@@ -211,6 +227,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     'id': 17,
+    'image': 'https://fakeimg.pl/120x160/?text=Hello',
     'title': 'Product Seventeen',
     'description': 'Description for product seventeen.',
     'price': {
@@ -224,6 +241,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     'id': 18,
+    'image': 'https://fakeimg.pl/120x160/?text=Hello',
     'title': 'Product Eighteen',
     'description': 'Description for product eighteen.',
     'price': {
@@ -237,6 +255,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     'id': 19,
+    'image': 'https://fakeimg.pl/120x160/?text=Hello',
     'title': 'Product Nineteen',
     'description': 'Description for product nineteen.',
     'price': {
@@ -250,6 +269,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     'id': 20,
+    'image': 'https://fakeimg.pl/120x160/?text=Hello',
     'title': 'Product Twenty',
     'description': 'Description for product twenty.',
     'price': {
