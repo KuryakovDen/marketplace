@@ -10,10 +10,41 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --whitePrimary: #FFFFFF;
+  --blackPrimary: #000000;
+  --grayPrimary: #808080;
+  --pinkPrimary: #FFC0CB;
+  --cornflowerBlue: #6495ED;
+
+  --spacing0x: 0px;
+  --spacing1x: 2px;
+  --spacing2x: 4px;
+  --spacing3x: 6px;
+  --spacing4x: 8px;
+  --spacing6x: 12px;
+  --spacing8x: 16px;
+  --spacing10x: 20px;
+  --spacing12x: 24px;
+  --spacing16x: 32px;
+  --spacing20x: 40px;
+
+  --borderRadiusXxs: 4px;
+  --borderRadiusXs: 8px;
+  --borderRadiusS: 12px;
+  --borderRadiusM: 16px;
+  --borderRadiusL: 20px;
+  --borderRadiusXl: 24px;
+  --borderRadiusXxl: 32px;
+
+  --boxShadowDefault: rgba(0, 0, 0, 0.16) 0 1px 4px;
+  --boxShadowHover: rgba(0, 0, 0, 0.24) 0 3px 8px;
 }
 
 body {
-  margin: 0;
-  min-width: 320px;
+  margin: 0 auto;
+  padding: var(--spacing10x);
+  max-width: 360px;
   min-height: 100vh;
+  border: 1px solid var(--blackPrimary);
 }
