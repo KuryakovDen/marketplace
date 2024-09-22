@@ -12,6 +12,11 @@ type ProductItemProps = {
   description: string;
   price: string;
   isFavourite: boolean;
+
+  // Тут я бы сделал тип что-то вроде 
+  // onProductClick: (id: number) => void;
+  // Потому что MouseEventHandler тип специфичен для компонента и получается что вышестоящему нужно знать про этот тип
+  // Это усложнить перенос компонента на другой UI например фреймворк, у которого другой тип событий
   onProductClick: MouseEventHandler<HTMLDivElement>;
   onFavouriteClick: MouseEventHandler<HTMLButtonElement>;
   onCartAdd?: MouseEventHandler<HTMLButtonElement>;
@@ -30,12 +35,18 @@ function ProductItem(
     onCartAdd
   }: ProductItemProps
 ) {
+
+  // const handleProductClick = useCallback<MouseEventHandler<HTMLDivElement>>((e) => {
+  //   onProductClick(e.target.value);
+  // })
+
   return <div className={styles.root} onClick={onProductClick}>
     <div className={styles.textWrapper}>
       <img src={image} height={160} alt={`${title} image`} />
       {/* TODO Заменить на компонент Header */}
       <strong className={styles.title}>{title}</strong>
       <span className={styles.description}>{description}</span>
+      {/* тут наверное больше похоже на компонент FavoriteButton */}
       {/* TODO Заменить на компонент IconButton */}
       <button
         className={classNames(styles.favouriteButton, {
