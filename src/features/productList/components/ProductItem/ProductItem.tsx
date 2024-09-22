@@ -1,4 +1,4 @@
-import { MouseEventHandler, useCallback } from 'react'
+import { useCallback } from 'react'
 import { GrFavorite } from "react-icons/gr";
 import { MdFavorite } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
@@ -6,6 +6,7 @@ import styles from './ProductItem.module.css'
 import classNames from 'classnames';
 import Money from '../../../../shared/ui/Money/Money.tsx'
 import { Price } from '../../../../shared/types/commonTypes.ts'
+import { Product } from '../../../../shared/types/product/Product.types.ts'
 
 type ProductItemProps = {
   id: number;
@@ -14,10 +15,10 @@ type ProductItemProps = {
   description: string;
   price: Price;
   isFavourite: boolean;
-  onProductClick: (id: number) => void;
-  onFavouriteClick: MouseEventHandler<HTMLButtonElement>;
-  onCartAdd?: MouseEventHandler<HTMLButtonElement>;
-  onCartRemove?: MouseEventHandler<HTMLButtonElement>;
+  onProductClick: (productId: number) => void;
+  onFavouriteClick: (productId: number) => void;
+  onCartAdd?: (productId: number) => void;
+  onCartRemove?: (productId: number) => void;
 }
 
 function ProductItem(
@@ -33,8 +34,16 @@ function ProductItem(
   }: ProductItemProps
 ) {
   const handleProductClick = useCallback((e) => {
-    onProductClick(e.target.value?.id);
+    const product: Product = e.target.value;
+
+    onProductClick(product.id);
   }, [onProductClick])
+
+  const handleProductFavoriteClick = useCallback((e) => {
+    const product: Product = e.target.value;
+
+    onFavouriteClick(product.id);
+  }, [onFavouriteClick])
 
   return <div className={styles.root} onClick={handleProductClick}>
     <div className={styles.textWrapper}>
@@ -47,7 +56,7 @@ function ProductItem(
         className={classNames(styles.favouriteButton, {
           [styles.favourite]: isFavourite,
       })}
-        onClick={onFavouriteClick}
+        onClick={handleProductFavoriteClick}
       >
         {isFavourite ? <MdFavorite /> : <GrFavorite />}
       </button>
