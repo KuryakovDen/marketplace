@@ -1,4 +1,4 @@
-import { MouseEventHandler } from 'react'
+import { MouseEventHandler, useCallback } from 'react'
 import { GrFavorite } from "react-icons/gr";
 import { MdFavorite } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
@@ -14,7 +14,7 @@ type ProductItemProps = {
   description: string;
   price: Price;
   isFavourite: boolean;
-  onProductClick: MouseEventHandler<HTMLDivElement>;
+  onProductClick: (id: number) => void;
   onFavouriteClick: MouseEventHandler<HTMLButtonElement>;
   onCartAdd?: MouseEventHandler<HTMLButtonElement>;
   onCartRemove?: MouseEventHandler<HTMLButtonElement>;
@@ -32,7 +32,11 @@ function ProductItem(
     onCartAdd
   }: ProductItemProps
 ) {
-  return <div className={styles.root} onClick={onProductClick}>
+  const handleProductClick = useCallback((e) => {
+    onProductClick(e.target.value?.id);
+  }, [onProductClick])
+
+  return <div className={styles.root} onClick={handleProductClick}>
     <div className={styles.textWrapper}>
       <img src={image} height={160} alt={`${title} image`} />
       {/* TODO Заменить на компонент Header */}
