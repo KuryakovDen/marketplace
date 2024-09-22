@@ -45,6 +45,15 @@ function ProductItem(
     onFavouriteClick(product.id);
   }, [onFavouriteClick])
 
+  const handleProductAddCartClick = useCallback((e) => {
+    const product: Product = e.target.value;
+
+    if (onCartAdd) {
+      onCartAdd(product.id);
+    }
+
+  }, [onCartAdd])
+
   return <div className={styles.root} onClick={handleProductClick}>
     <div className={styles.textWrapper}>
       <img src={image} height={160} alt={`${title} image`} />
@@ -64,7 +73,7 @@ function ProductItem(
     <div className={styles.priceWrapper}>
       <Money price={price} />
       {/* TODO Заменить на компонент IconButton */}
-      <button className={styles.addButton} onClick={onCartAdd}>
+      <button className={styles.addButton} onClick={handleProductAddCartClick}>
         <FaPlus />
       </button>
     </div>

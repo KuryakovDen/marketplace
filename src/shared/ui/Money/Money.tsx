@@ -1,5 +1,5 @@
-import { Price } from '../../types/product/Product.types.ts'
 import styles from './Money.module.css'
+import { Price } from '../../types/commonTypes.ts'
 
 type MoneyProps = {
   price: Price
