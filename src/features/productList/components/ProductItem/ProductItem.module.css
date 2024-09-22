@@ -53,10 +53,6 @@
     align-items: center;
 }
 
-.price {
-    font-size: 20px;
-}
-
 .addButton {
     display: flex;
     align-items: center;

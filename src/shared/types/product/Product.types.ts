@@ -1,20 +1,18 @@
+import { Price } from '../commonTypes.ts'
 
 type ProductProperty = {
   title: string;
   value: string;
 }
 
-export type ProductPrice = {
-  amount: number;
-  currency: string;
-}
+type ProductId = number
 
 export type Product = {
-  id: number;
+  id: ProductId;
   image: string;
   title: string;
   description: string;
-  price: ProductPrice;
+  price: Price;
   categoryId: number;
   availableCount: number;
   isFavourite: boolean;
