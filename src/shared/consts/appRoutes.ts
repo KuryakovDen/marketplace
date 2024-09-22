@@ -1,5 +1,5 @@
 
-export enum AppRoute {
-  Main= '/',
-  Product = '/product'
+export const AppRoute = {
+  Main: '/',
+  Product : '/product'
 }
