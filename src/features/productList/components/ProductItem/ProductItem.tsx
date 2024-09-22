@@ -5,7 +5,7 @@ import { FaPlus } from "react-icons/fa6";
 import styles from './ProductItem.module.css'
 import classNames from 'classnames';
 import Money from '../../../../shared/ui/Money/Money.tsx'
-import { Price } from '../../../../shared/types/product/Product.types.ts'
+import { Price } from '../../../../shared/types/commonTypes.ts'
 
 type ProductItemProps = {
   id: number;
