@@ -4,13 +4,15 @@ import { MdFavorite } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
 import styles from './ProductItem.module.css'
 import classNames from 'classnames';
+import Money from '../../../../shared/ui/Money/Money.tsx'
+import { Price } from '../../../../shared/types/product/Product.types.ts'
 
 type ProductItemProps = {
   id: number;
   image: string;
   title: string;
   description: string;
-  price: string;
+  price: Price;
   isFavourite: boolean;
   onProductClick: MouseEventHandler<HTMLDivElement>;
   onFavouriteClick: MouseEventHandler<HTMLButtonElement>;
@@ -36,7 +38,7 @@ function ProductItem(
       {/* TODO Заменить на компонент Header */}
       <strong className={styles.title}>{title}</strong>
       <span className={styles.description}>{description}</span>
-      {/* TODO Заменить на компонент IconButton */}
+      {/* TODO Заменить на компонент IconButton -> FavouriteButton  */}
       <button
         className={classNames(styles.favouriteButton, {
           [styles.favourite]: isFavourite,
@@ -47,7 +49,7 @@ function ProductItem(
       </button>
     </div>
     <div className={styles.priceWrapper}>
-      <b className={styles.price}>{price}</b>
+      <Money price={price} />
       {/* TODO Заменить на компонент IconButton */}
       <button className={styles.addButton} onClick={onCartAdd}>
         <FaPlus />

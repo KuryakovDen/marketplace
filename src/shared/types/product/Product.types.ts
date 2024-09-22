@@ -4,17 +4,19 @@ type ProductProperty = {
   value: string;
 }
 
-export type ProductPrice = {
+export type Price = {
   amount: number;
   currency: string;
 }
 
+type ProductId = number
+
 export type Product = {
-  id: number;
+  id: ProductId;
   image: string;
   title: string;
   description: string;
-  price: ProductPrice;
+  price: Price;
   categoryId: number;
   availableCount: number;
   isFavourite: boolean;

@@ -1,5 +1,4 @@
 import ProductItem from '../ProductItem/ProductItem.tsx'
-import getProductPrice from '../../utils/getProductPrice.ts'
 import styles from './ProductList.module.css'
 import { Product } from '../../../../shared/types/product/Product.types.ts'
 
@@ -13,8 +12,9 @@ function ProductList({ products } : ProductListProps) {
       <li key={product.id} className={styles.productItem}>
         <ProductItem
           {...product}
-          price={getProductPrice(product.price)}
+          // TODO Сделать редирект на страницу продукта
           onProductClick={() => {}}
+          // TODO Выполнить запрос на добавление в избранное
           onFavouriteClick={() => {}}
         />
     </li>)}
