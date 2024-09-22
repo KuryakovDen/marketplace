@@ -1,11 +1,15 @@
 import ProductItem from '../ProductItem/ProductItem.tsx'
-import { MOCK_PRODUCTS } from '../../mocks'
 import getProductPrice from '../../utils/getProductPrice.ts'
 import styles from './ProductList.module.css'
+import { Product } from '../../../../shared/types/product/Product.types.ts'
 
-function ProductList() {
+type ProductListProps = {
+  products: Product[]
+}
+
+function ProductList({ products } : ProductListProps) {
   return <ul className={styles.productList}>
-    {MOCK_PRODUCTS.map((product) =>
+    {products.map((product) =>
       <li key={product.id} className={styles.productItem}>
         <ProductItem
           {...product}
