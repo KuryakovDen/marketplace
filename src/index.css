@@ -49,3 +49,19 @@ body {
   min-height: 100vh;
   border: 1px solid var(--blackPrimary);
 }
+
+h1 {
+  font-size: 20px;
+}
+
+h2 {
+  font-size: 14px;
+}
+
+h3 {
+  font-size: 12px;
+}
+
+h1, h2, h3 {
+  margin: 0;
+}

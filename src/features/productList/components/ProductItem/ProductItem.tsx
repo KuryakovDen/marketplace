@@ -1,10 +1,11 @@
 import { useCallback } from 'react'
-import { FaPlus } from "react-icons/fa6";
+import { FaPlus as PlusIcon } from "react-icons/fa6";
 import styles from './ProductItem.module.css'
 import Money from '../../../../shared/ui/Money/Money.tsx'
 import { Price } from '../../../../shared/types/commonTypes.ts'
 import Button from '../../../../shared/ui/Button/Button.tsx'
 import FavouriteButton from '../../../../shared/ui/FavouriteButton/FavouriteButton.tsx'
+import Header from '../../../../shared/ui/Header/Header.tsx'
 
 type ProductItemProps = {
   id: number;
@@ -50,9 +51,17 @@ function ProductItem(
 
   return <div className={styles.root} onClick={handleProductClick}>
     <div className={styles.textWrapper}>
-      <img src={image} height={160} alt={`${title} image`} />
-      {/* TODO Заменить на компонент Header */}
-      <strong className={styles.title}>{title}</strong>
+      <img
+        src={image}
+        height={160}
+        className={styles.image}
+        alt={`${title} image`}
+      />
+      <Header
+        level={'h2'}
+      >
+        {title}
+      </Header>
       <span className={styles.description}>{description}</span>
       <FavouriteButton
         isFavourite={isFavourite}
@@ -63,7 +72,7 @@ function ProductItem(
     <div className={styles.priceWrapper}>
       <Money price={price} />
       <Button onClick={handleProductAddCartClick}>
-        <FaPlus />
+        <PlusIcon />
       </Button>
     </div>
   </div>
