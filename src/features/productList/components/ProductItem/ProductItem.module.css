@@ -54,14 +54,8 @@
 }
 
 .addButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background-color: var(--cornflowerBlue);
     width: 24px;
     height: 24px;
-    border-radius: var(--borderRadiusXs);
     color: var(--whitePrimary);
 
     &:hover {

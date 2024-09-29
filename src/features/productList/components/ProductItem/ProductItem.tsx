@@ -6,7 +6,7 @@ import styles from './ProductItem.module.css'
 import classNames from 'classnames';
 import Money from '../../../../shared/ui/Money/Money.tsx'
 import { Price } from '../../../../shared/types/commonTypes.ts'
-import { Product } from '../../../../shared/types/product/Product.types.ts'
+import Button from '../../../../shared/ui/Button/Button.tsx'
 
 type ProductItemProps = {
   id: number;
@@ -33,23 +33,21 @@ function ProductItem(
     onCartAdd
   }: ProductItemProps
 ) {
-  const handleProductClick = useCallback((e) => {
-    const product: Product = e.target.value;
+  const TEST_ID = 1
 
-    onProductClick(product.id);
+  const handleProductClick = useCallback(() => {
+
+
+    onProductClick(TEST_ID);
   }, [onProductClick])
 
-  const handleProductFavoriteClick = useCallback((e) => {
-    const product: Product = e.target.value;
-
-    onFavouriteClick(product.id);
+  const handleProductFavoriteClick = useCallback(() => {
+    onFavouriteClick(TEST_ID);
   }, [onFavouriteClick])
 
-  const handleProductAddCartClick = useCallback((e) => {
-    const product: Product = e.target.value;
-
+  const handleProductAddCartClick = useCallback(() => {
     if (onCartAdd) {
-      onCartAdd(product.id);
+      onCartAdd(TEST_ID);
     }
 
   }, [onCartAdd])
@@ -72,10 +70,9 @@ function ProductItem(
     </div>
     <div className={styles.priceWrapper}>
       <Money price={price} />
-      {/* TODO Заменить на компонент IconButton */}
-      <button className={styles.addButton} onClick={handleProductAddCartClick}>
+      <Button className={styles.addButton} onClick={handleProductAddCartClick}>
         <FaPlus />
-      </button>
+      </Button>
     </div>
   </div>
 }
