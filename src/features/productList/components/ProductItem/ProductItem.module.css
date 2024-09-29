@@ -31,34 +31,12 @@
 
 .favouriteButton {
     position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     right: var(--spacing6x);
     top: var(--spacing6x);
-    border-radius: 50%;
-    border: none;
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-}
-
-.favourite {
-    background-color: var(--pinkPrimary);
 }
 
 .priceWrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.addButton {
-    width: 24px;
-    height: 24px;
-    color: var(--whitePrimary);
-
-    &:hover {
-        cursor: pointer;
-    }
 }

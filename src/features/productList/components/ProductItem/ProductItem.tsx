@@ -1,12 +1,10 @@
 import { useCallback } from 'react'
-import { GrFavorite } from "react-icons/gr";
-import { MdFavorite } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
 import styles from './ProductItem.module.css'
-import classNames from 'classnames';
 import Money from '../../../../shared/ui/Money/Money.tsx'
 import { Price } from '../../../../shared/types/commonTypes.ts'
 import Button from '../../../../shared/ui/Button/Button.tsx'
+import FavouriteButton from '../../../../shared/ui/FavouriteButton/FavouriteButton.tsx'
 
 type ProductItemProps = {
   id: number;
@@ -36,8 +34,6 @@ function ProductItem(
   const TEST_ID = 1
 
   const handleProductClick = useCallback(() => {
-
-
     onProductClick(TEST_ID);
   }, [onProductClick])
 
@@ -58,19 +54,15 @@ function ProductItem(
       {/* TODO Заменить на компонент Header */}
       <strong className={styles.title}>{title}</strong>
       <span className={styles.description}>{description}</span>
-      {/* TODO Заменить на компонент IconButton -> FavouriteButton  */}
-      <button
-        className={classNames(styles.favouriteButton, {
-          [styles.favourite]: isFavourite,
-      })}
+      <FavouriteButton
+        isFavourite={isFavourite}
         onClick={handleProductFavoriteClick}
-      >
-        {isFavourite ? <MdFavorite /> : <GrFavorite />}
-      </button>
+        className={styles.favouriteButton}
+      />
     </div>
     <div className={styles.priceWrapper}>
       <Money price={price} />
-      <Button className={styles.addButton} onClick={handleProductAddCartClick}>
+      <Button onClick={handleProductAddCartClick}>
         <FaPlus />
       </Button>
     </div>
