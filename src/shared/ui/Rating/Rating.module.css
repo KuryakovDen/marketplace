@@ -1,0 +1,18 @@
+.root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.rating {
+    font-size: 24px;
+}
+
+.selectedRating {
+    color: var(--blackPrimary);
+}
+
+.unselectedRating {
+    color: var(--grayPrimary);
+}
