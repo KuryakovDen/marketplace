@@ -71,7 +71,7 @@ function ProductItem(
     </div>
     <div className={styles.priceWrapper}>
       <Money price={price} />
-      <Button onClick={handleProductAddCartClick}>
+      <Button onClick={handleProductAddCartClick} className={styles.buyButton}>
         <PlusIcon />
       </Button>
     </div>
