@@ -6,14 +6,16 @@ type ButtonProps = {
   children: ReactNode;
   onClick: () => void;
   className?: string;
+  disabled?: boolean;
 }
 
-function Button({ children, onClick, className }: ButtonProps){
-  const onButtonClick = useCallback(() => onClick, [onClick])
-
+function Button({ children, onClick, className, disabled }: ButtonProps){
   return <button
-    className={classNames(styles.root, className)}
-    onClick={onButtonClick}
+    className={classNames(styles.root, className, {
+      [styles.disabled]: disabled
+    })}
+    onClick={onClick}
+    disabled={disabled}
   >
     {children}
   </button>
