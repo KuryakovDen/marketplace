@@ -1,6 +1,6 @@
 import { Price } from '../commonTypes.ts'
 
-type ProductProperty = {
+export type ProductProperty = {
   title: string;
   value: string;
 }
