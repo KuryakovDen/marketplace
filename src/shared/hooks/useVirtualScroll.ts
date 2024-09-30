@@ -1,28 +1,38 @@
-import { useCallback, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-export type ScrollDirection = 'forward' | 'backward';
+function useVirtualScroll<T>(items: T[], itemHeight: number) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [visibleItems, setVisibleItems] = useState<T[]>([]);
+  const [scrollHeight, setScrollHeight] = useState(0);
 
-export type ScrollState = {
-  scrollOffset: number;
-  scrollDirection: ScrollDirection;
-}
+  useEffect(() => {
+    const handleScroll = () => {
+      if (containerRef.current) {
+        const { scrollTop, clientHeight } = containerRef.current;
+        const totalHeight = items.length * itemHeight;
 
-function useVirtualScroll() {
-  const initValue: ScrollState = { scrollOffset: 0, scrollDirection: 'forward' };
-  const [scrollState, setScrollState] = useState<ScrollState>(initValue);
 
-  const onScroll = useCallback((clientExtent: number, scrollExtent: number, scrollOffset: number) => {
-    if (scrollState.scrollOffset === scrollOffset) {
-      return;
+        const startIndex = Math.floor(scrollTop / itemHeight);
+        const endIndex = Math.min(items.length - 1, Math.ceil((scrollTop + clientHeight) / itemHeight));
+
+        setVisibleItems(items.slice(startIndex, endIndex + 1));
+        setScrollHeight(totalHeight);
+      }
+    };
+
+    const currentRef = containerRef.current;
+
+    if (currentRef) {
+      currentRef.addEventListener('scroll', handleScroll);
+      handleScroll();
+
+      return () => {
+        currentRef.removeEventListener('scroll', handleScroll);
+      };
     }
+  }, [items, itemHeight]);
 
-    const newOffset = Math.max(0, Math.min(scrollOffset, scrollExtent - clientExtent));
-    const newScrollDirection = scrollState.scrollOffset <= newOffset ? 'forward' : 'backward';
-
-    setScrollState({ scrollOffset: newOffset, scrollDirection: newScrollDirection });
-  }, [scrollState]);
-
-  return [scrollState, onScroll] as const;
+  return { containerRef, visibleItems, scrollHeight };
 }
 
 export default useVirtualScroll;
