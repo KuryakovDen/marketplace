@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    min-height: 250px;
+    height: 250px;
     box-shadow: var(--boxShadowDefault);
     border-radius: var(--borderRadiusXs);
     padding: var(--spacing4x);
@@ -19,9 +19,8 @@
     flex-direction: column;
 }
 
-.title {
-    font-size: 14px;
-    margin-top: var(--spacing2x);
+.image {
+    margin-bottom: var(--spacing4x);
 }
 
 .description {
@@ -31,20 +30,8 @@
 
 .favouriteButton {
     position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     right: var(--spacing6x);
     top: var(--spacing6x);
-    border-radius: 50%;
-    border: none;
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-}
-
-.favourite {
-    background-color: var(--pinkPrimary);
 }
 
 .priceWrapper {
@@ -53,18 +40,6 @@
     align-items: center;
 }
 
-.addButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background-color: var(--cornflowerBlue);
+.buyButton {
     width: 24px;
-    height: 24px;
-    border-radius: var(--borderRadiusXs);
-    color: var(--whitePrimary);
-
-    &:hover {
-        cursor: pointer;
-    }
 }

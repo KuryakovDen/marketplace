@@ -16,6 +16,7 @@
   --grayPrimary: #808080;
   --pinkPrimary: #FFC0CB;
   --cornflowerBlue: #6495ED;
+  --aquamarine: #7fffd4;
 
   --spacing0x: 0px;
   --spacing1x: 2px;
@@ -47,4 +48,20 @@ body {
   max-width: 360px;
   min-height: 100vh;
   border: 1px solid var(--blackPrimary);
+}
+
+h1 {
+  font-size: 20px;
+}
+
+h2 {
+  font-size: 14px;
+}
+
+h3 {
+  font-size: 12px;
+}
+
+h1, h2, h3 {
+  margin: 0;
 }

@@ -1,12 +1,11 @@
 import { useCallback } from 'react'
-import { GrFavorite } from "react-icons/gr";
-import { MdFavorite } from "react-icons/md";
-import { FaPlus } from "react-icons/fa6";
+import { FaPlus as PlusIcon } from "react-icons/fa6";
 import styles from './ProductItem.module.css'
-import classNames from 'classnames';
 import Money from '../../../../shared/ui/Money/Money.tsx'
 import { Price } from '../../../../shared/types/commonTypes.ts'
-import { Product } from '../../../../shared/types/product/Product.types.ts'
+import Button from '../../../../shared/ui/Button/Button.tsx'
+import FavouriteButton from '../../../../shared/ui/FavouriteButton/FavouriteButton.tsx'
+import Header from '../../../../shared/ui/Header/Header.tsx'
 
 type ProductItemProps = {
   id: number;
@@ -33,49 +32,48 @@ function ProductItem(
     onCartAdd
   }: ProductItemProps
 ) {
-  const handleProductClick = useCallback((e) => {
-    const product: Product = e.target.value;
+  const TEST_ID = 1
 
-    onProductClick(product.id);
+  const handleProductClick = useCallback(() => {
+    onProductClick(TEST_ID);
   }, [onProductClick])
 
-  const handleProductFavoriteClick = useCallback((e) => {
-    const product: Product = e.target.value;
-
-    onFavouriteClick(product.id);
+  const handleProductFavoriteClick = useCallback(() => {
+    onFavouriteClick(TEST_ID);
   }, [onFavouriteClick])
 
-  const handleProductAddCartClick = useCallback((e) => {
-    const product: Product = e.target.value;
-
+  const handleProductAddCartClick = useCallback(() => {
     if (onCartAdd) {
-      onCartAdd(product.id);
+      onCartAdd(TEST_ID);
     }
 
   }, [onCartAdd])
 
   return <div className={styles.root} onClick={handleProductClick}>
     <div className={styles.textWrapper}>
-      <img src={image} height={160} alt={`${title} image`} />
-      {/* TODO Заменить на компонент Header */}
-      <strong className={styles.title}>{title}</strong>
-      <span className={styles.description}>{description}</span>
-      {/* TODO Заменить на компонент IconButton -> FavouriteButton  */}
-      <button
-        className={classNames(styles.favouriteButton, {
-          [styles.favourite]: isFavourite,
-      })}
-        onClick={handleProductFavoriteClick}
+      <img
+        src={image}
+        height={160}
+        className={styles.image}
+        alt={`${title} image`}
+      />
+      <Header
+        level={'h2'}
       >
-        {isFavourite ? <MdFavorite /> : <GrFavorite />}
-      </button>
+        {title}
+      </Header>
+      <span className={styles.description}>{description}</span>
+      <FavouriteButton
+        isFavourite={isFavourite}
+        onClick={handleProductFavoriteClick}
+        className={styles.favouriteButton}
+      />
     </div>
     <div className={styles.priceWrapper}>
       <Money price={price} />
-      {/* TODO Заменить на компонент IconButton */}
-      <button className={styles.addButton} onClick={handleProductAddCartClick}>
-        <FaPlus />
-      </button>
+      <Button onClick={handleProductAddCartClick} className={styles.buyButton}>
+        <PlusIcon />
+      </Button>
     </div>
   </div>
 }

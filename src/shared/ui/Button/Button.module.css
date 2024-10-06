@@ -1,0 +1,19 @@
+.root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: var(--blackPrimary);
+    border-radius: var(--borderRadiusXs);
+    height: 24px;
+    color: var(--whitePrimary);
+
+    &:hover {
+        box-shadow: var(--boxShadowHover);
+        cursor: pointer;
+    }
+}
+
+.disabled {
+    opacity: 0.6;
+}

@@ -1,0 +1,10 @@
+.root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--whitePrimary);
+    border-radius: var(--borderRadiusXxs);
+    height: 20px;
+    font-size: 10px;
+    background-color: var(--blackPrimary);
+}
