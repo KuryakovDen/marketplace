@@ -1,3 +1,6 @@
 .root {
-
+    padding: var(--spacing0x);
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 12px;
 }

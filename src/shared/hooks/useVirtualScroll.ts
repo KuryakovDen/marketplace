@@ -1,6 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
+import { MutableRefObject, useEffect, useRef, useState } from 'react'
 
-function useVirtualScroll<T>(items: T[], itemHeight: number) {
+function useVirtualScroll<T>(items: T[], itemHeight: number): {
+  containerRef:  MutableRefObject<HTMLDivElement>,
+  visibleItems: T[],
+  scrollHeight: number
+} {
   const containerRef = useRef<HTMLDivElement>(null);
   const [visibleItems, setVisibleItems] = useState<T[]>([]);
   const [scrollHeight, setScrollHeight] = useState(0);
