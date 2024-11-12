@@ -2,7 +2,7 @@ import api from './httpClient.ts'
 
 class ApiService {
   // Метод для получения данных
-  static async get(endpoint) {
+  async get<T>(endpoint): Promise<T> {
     try {
       const { data } = await api.get(endpoint);
       return data;
@@ -13,7 +13,7 @@ class ApiService {
   }
 
   // Метод для создания данных
-  static async create(endpoint, data) {
+  async create<T>(endpoint, data): Promise<T> {
     try {
       const response = await api.post(endpoint, data);
       return response.data;
@@ -24,7 +24,7 @@ class ApiService {
   }
 
   // Метод для обновления данных
-  static async update(endpoint, data) {
+  async update<T>(endpoint, data):Promise<T> {
     try {
       const response = await api.put(endpoint, data);
       return response.data;
@@ -35,7 +35,7 @@ class ApiService {
   }
 
   // Метод для удаления данных
-  static async delete(endpoint) {
+  async delete<T>(endpoint): Promise<T> {
     try {
       const { data } = await api.delete(endpoint);
       return data;
