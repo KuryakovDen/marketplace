@@ -1,14 +1,18 @@
 import ProductItem from '../ProductItem/ProductItem.tsx'
 import styles from './ProductList.module.css'
-import { Product } from '../../../../shared/types/product/Product.types.ts'
+import useGetProductList from '../../hooks/useGetProductList.ts'
 
-type ProductListProps = {
-  products: Product[]
-}
+function ProductList() {
+  const { data, isLoading: isProductListLoading } = useGetProductList();
 
-function ProductList({ products } : ProductListProps) {
+  if (isProductListLoading) {
+    // TODO Сделать спиннер/скелетон загрузки
+  }
+
+  const { products } = data || {};
+
   return <ul className={styles.productList}>
-    {products.map((product) =>
+    {products?.map((product) =>
       <li key={product.id} className={styles.productItem}>
         <ProductItem
           {...product}
