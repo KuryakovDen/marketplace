@@ -30,7 +30,7 @@ function ProductList() {
   }, [intersectionRef]);
 
   if (isProductListLoading) {
-    return // TODO: Заменить на спиннер/скелетон
+    return // TODO Заменить на спиннер/скелетон
   }
 
   const products: Product[] = data?.pages.flatMap(page => page.products) || [];
@@ -45,7 +45,9 @@ function ProductList() {
         >
           <ProductItem
             {...product}
+            // TODO Сделать редирект на страницу продукта
             onProductClick={() => {}}
+            // TODO Выполнить запрос на добавление в избранное
             onFavouriteClick={() => {}}
           />
         </li>
