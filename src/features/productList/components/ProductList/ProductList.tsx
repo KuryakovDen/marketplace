@@ -15,11 +15,7 @@ function ProductList() {
   } = useGetProductList();
 
   const intersectionRef = useIntersectionObserver({
-    onIntersect: () => {
-      if (hasNextPage && !isFetchingNextPage) {
-        void fetchNextProducts();
-      }
-    },
+    onIntersect: fetchNextProducts,
     enabled: hasNextPage && !isFetchingNextPage,
   });
 
