@@ -7,6 +7,7 @@ type ApiService = {
   remove: <T>(endpoint: string) => Promise<T>
 }
 
+// Лучше сделать как класс, чтобы было удобно использовать возможности наследования
 const ApiService: ApiService = {
   // Метод для получения данных
   get: async <T>(endpoint: string): Promise<T> => {

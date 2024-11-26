@@ -5,11 +5,13 @@ interface UseIntersectionObserverProps {
   enabled?: boolean;
 }
 
+// Переименовать в useIntersectionInfiniteScroll или сделать его боле общим и на основе него useIntersectionInfiniteScroll
 function useIntersectionObserver({
    onIntersect,
    enabled = true,
 }: UseIntersectionObserverProps) {
-  const targetRef = useRef<HTMLDivElement>(null as unknown as HTMLDivElement);
+  // const targetRef = useRef<HTMLDivElement>(null as unknown as HTMLDivElement);
+  const targetRef = useRef<HTMLDivElement | null>(null);
 
   const handleObserver = useCallback(
     (entries: IntersectionObserverEntry[]) => {

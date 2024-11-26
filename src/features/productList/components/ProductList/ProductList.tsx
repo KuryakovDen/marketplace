@@ -30,12 +30,14 @@ function ProductList() {
     return // TODO Заменить на спиннер/скелетон
   }
 
+  // Верстку списка еще можно было вынести в компонент
   return (
     <ul className={styles.productList}>
       {products.map((product, index) => (
         <li
           key={product.id}
           className={styles.productItem}
+          // Тут можно было не отображать вообще список, если продуктов нет
           ref={index === products.length - 1 ? lastProductRef : undefined}
         >
           <ProductItem
