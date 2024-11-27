@@ -5,11 +5,11 @@ interface UseIntersectionObserverProps {
   enabled?: boolean;
 }
 
-function useIntersectionObserver({
+function useIntersectionInfiniteScroll({
    onIntersect,
    enabled = true,
 }: UseIntersectionObserverProps) {
-  const targetRef = useRef<HTMLDivElement>(null as unknown as HTMLDivElement);
+  const targetRef = useRef<HTMLDivElement | null>(null);
 
   const handleObserver = useCallback(
     (entries: IntersectionObserverEntry[]) => {
@@ -44,4 +44,4 @@ function useIntersectionObserver({
   return targetRef;
 }
 
-export default useIntersectionObserver;
+export default useIntersectionInfiniteScroll;
