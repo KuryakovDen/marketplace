@@ -6,7 +6,7 @@ import { MutableRefObject, useCallback } from 'react'
 
 function ProductList() {
   const {
-    data = {},
+    products,
     fetchNextPage: fetchNextProducts,
     hasNextPage,
     isLoading: isProductListLoading,
@@ -17,8 +17,6 @@ function ProductList() {
     onIntersect: fetchNextProducts,
     enabled: hasNextPage && !isFetchingNextPage,
   });
-
-  const { preparedProducts: products } = data
 
   const lastProductRef = useCallback((node: HTMLLIElement | null) => {
     if (node !== null) {

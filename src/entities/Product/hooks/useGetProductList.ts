@@ -1,38 +1,46 @@
-import ApiService from '../../../shared/api/apiService.ts'
-import { Product } from '../../../shared/types/product/Product.types.ts'
-import { InfiniteData, useInfiniteQuery, UseInfiniteQueryResult } from '@tanstack/react-query'
+import ApiService from '../../../shared/api/apiService.ts';
+import { Product } from '../../../shared/types/product/Product.types.ts';
+import { useInfiniteQuery, UseInfiniteQueryResult } from '@tanstack/react-query';
 
 interface ProductListApiResponse {
   products: Product[];
-  page: number;
-  total: number;
+  page?: number;
+  total?: number;
 }
 
-interface InfiniteProductData extends InfiniteData<ProductListApiResponse> {
-  preparedProducts: Product[];
-}
-
-const useGetProductList = (): UseInfiniteQueryResult<InfiniteProductData, Error> => {
+const useGetProductList = () => {
   const PRODUCT_LIST_KEY = 'productList';
   const DEFAULT_PRODUCT_LIMIT = 10;
 
-  return useInfiniteQuery<ProductListApiResponse, Error, InfiniteProductData>({
+  const {
+    data,
+    isLoading,
+    hasNextPage,
+    fetchNextPage,
+    isFetchingNextPage,
+  }: UseInfiniteQueryResult<ProductListApiResponse, Error> = useInfiniteQuery<ProductListApiResponse, Error>({
     queryKey: [PRODUCT_LIST_KEY],
     queryFn: async ({ pageParam = 1 }) => {
+      // TODO Вынести в отдельный сервис
       return await ApiService.get<ProductListApiResponse>(`products/search?page=${pageParam}&limit=${DEFAULT_PRODUCT_LIMIT}`);
     },
     getNextPageParam: (lastPage, allPages) => {
       const totalProductsLoaded = allPages.reduce((sum, page) => sum + page.products.length, 0);
-      const hasNextPage = totalProductsLoaded < lastPage.total;
-
+      const hasNextPage = totalProductsLoaded < (lastPage.total || 0);
       return hasNextPage ? lastPage.page + 1 : undefined;
     },
-    select: (data): InfiniteProductData => ({
-      ...data,
-      preparedProducts: data.pages.flatMap(page => page.products)
-    }),
     initialPageParam: 1,
   });
+
+  const products = data?.pages?.flatMap(page => page.products) || [];
+
+  return {
+    isLoading,
+    hasNextPage,
+    fetchNextPage,
+    products,
+    isFetchingNextPage,
+  };
 };
 
 export default useGetProductList;
