@@ -1,12 +1,6 @@
-import ApiService from '../../../shared/api/apiService.ts';
-import { Product } from '../../../shared/types/product/Product.types.ts';
 import { useInfiniteQuery, UseInfiniteQueryResult } from '@tanstack/react-query';
-
-interface ProductListApiResponse {
-  products: Product[];
-  page?: number;
-  total?: number;
-}
+import { productApiService } from '../services/productService.ts'
+import { ProductListApiResponse } from '../types/productTypes.ts'
 
 const useGetProductList = () => {
   const PRODUCT_LIST_KEY = 'productList';
@@ -18,11 +12,13 @@ const useGetProductList = () => {
     hasNextPage,
     fetchNextPage,
     isFetchingNextPage,
-  }: UseInfiniteQueryResult<ProductListApiResponse, Error> = useInfiniteQuery({
+  }: UseInfiniteQueryResult<ProductListApiResponse, Error> = useInfiniteQuery<ProductListApiResponse, Error>({
     queryKey: [PRODUCT_LIST_KEY],
     queryFn: async ({ pageParam = 1 }) => {
-      // TODO Вынести в отдельный сервис
-      return await ApiService.get<ProductListApiResponse>(`products/search?page=${pageParam}&limit=${DEFAULT_PRODUCT_LIMIT}`);
+      return await productApiService.search({
+        page: pageParam,
+        limit: DEFAULT_PRODUCT_LIMIT,
+      });
     },
     getNextPageParam: (lastPage, allPages) => {
       const totalProductsLoaded = allPages.reduce((sum, page) => sum + page.products.length, 0);
@@ -35,10 +31,10 @@ const useGetProductList = () => {
   const products = data?.pages?.flatMap(page => page.products) || [];
 
   return {
+    products,
     isLoading,
     hasNextPage,
     fetchNextPage,
-    products,
     isFetchingNextPage,
   };
 };

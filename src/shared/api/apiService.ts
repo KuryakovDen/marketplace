@@ -1,10 +1,12 @@
 import api from './httpClient.ts';
 
 class ApiService {
+  constructor(private baseUrl: string) {}
+
   // Метод для получения данных
-  async get<T>(endpoint: string): Promise<T> {
+  public async get<T>(endpoint: string): Promise<T> {
     try {
-      const { data } = await api.get(endpoint);
+      const { data } = await api.get(`${this.baseUrl}/${endpoint}`);
       return data;
     } catch (error) {
       console.error('Ошибка при GET запросе:', error);
@@ -13,9 +15,9 @@ class ApiService {
   }
 
   // Метод для создания данных
-  async create<T>(endpoint: string, data: T): Promise<T> {
+  public async create<T>(endpoint: string, data: T): Promise<T> {
     try {
-      const response = await api.post(endpoint, data);
+      const response = await api.post(`${this.baseUrl}/${endpoint}`, data);
       return response.data;
     } catch (error) {
       console.error('Ошибка при CREATE запросе:', error);
@@ -24,9 +26,9 @@ class ApiService {
   }
 
   // Метод для обновления данных
-  async update<T>(endpoint: string, data: T): Promise<T> {
+  public async update<T>(endpoint: string, data: T): Promise<T> {
     try {
-      const response = await api.put(endpoint, data);
+      const response = await api.put(`${this.baseUrl}/${endpoint}`, data);
       return response.data;
     } catch (error) {
       console.error('Ошибка при UPDATE запросе:', error);
@@ -35,9 +37,9 @@ class ApiService {
   }
 
   // Метод для удаления данных
-  async remove<T>(endpoint: string): Promise<T> {
+  public async remove<T>(endpoint: string): Promise<T> {
     try {
-      const { data } = await api.delete(endpoint);
+      const { data } = await api.delete(`${this.baseUrl}/${endpoint}`);
       return data;
     } catch (error) {
       console.error('Ошибка при DELETE запросе:', error);
@@ -46,5 +48,4 @@ class ApiService {
   }
 }
 
-// Экспортируем экземпляр класса ApiService
-export default new ApiService();
+export default ApiService;
