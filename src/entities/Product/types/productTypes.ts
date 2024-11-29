@@ -1,7 +1,7 @@
-import { Product } from '../../../shared/types/product/Product.types.ts'
+import { IProduct } from '../../../shared/types/product/productTypes.ts'
 
 export interface ProductListApiResponse {
-  products: Product[];
+  products: IProduct[];
   page?: number;
   total?: number;
 }
