@@ -18,7 +18,7 @@ const useGetProductList = () => {
     hasNextPage,
     fetchNextPage,
     isFetchingNextPage,
-  }: UseInfiniteQueryResult<ProductListApiResponse, Error> = useInfiniteQuery<ProductListApiResponse, Error>({
+  }: UseInfiniteQueryResult<ProductListApiResponse, Error> = useInfiniteQuery({
     queryKey: [PRODUCT_LIST_KEY],
     queryFn: async ({ pageParam = 1 }) => {
       // TODO Вынести в отдельный сервис
