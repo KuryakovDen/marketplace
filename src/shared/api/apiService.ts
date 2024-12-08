@@ -1,4 +1,5 @@
 import api from './httpClient.ts';
+import { LoginResponse, RegisterResponse } from '../types/api/apiTypes.ts'
 
 class ApiService {
   constructor(private baseUrl: string) {}
@@ -14,8 +15,7 @@ class ApiService {
     }
   }
 
-  // Метод для создания данных
-  public async create<T>(endpoint: string, data: T): Promise<T> {
+  public async create<T>(endpoint: string, data: T): Promise<T | LoginResponse | RegisterResponse> {
     try {
       const response = await api.post(`${this.baseUrl}/${endpoint}`, data);
       return response.data;
