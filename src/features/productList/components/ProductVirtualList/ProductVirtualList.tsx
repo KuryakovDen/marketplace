@@ -1,10 +1,10 @@
 import styles from './ProductVirtualList.module.css'
-import { Product } from '../../../../shared/types/product/Product.types.ts'
+import { IProduct } from '../../../../shared/types/product/productTypes.ts'
 import ProductItem from '../ProductItem/ProductItem.tsx'
 import useVirtualScroll from '../../../../shared/hooks/useVirtualScroll.ts'
 
 type ProductVirtualListProps = {
-  products: Product[]
+  products: IProduct[]
 }
 
 function ProductVirtualList({ products }: ProductVirtualListProps) {

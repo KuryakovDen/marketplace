@@ -1,13 +1,13 @@
 import { Price } from '../commonTypes.ts'
 
-export type ProductProperty = {
+export interface IProductProperty {
   title: string;
   value: string;
 }
 
-type ProductId = number
+export type ProductId = number
 
-export type Product = {
+export interface IProduct {
   id: ProductId;
   image: string;
   title: string;
@@ -16,5 +16,5 @@ export type Product = {
   categoryId: number;
   availableCount: number;
   isFavourite: boolean;
-  properties: ProductProperty[]
+  properties: IProductProperty[]
 }

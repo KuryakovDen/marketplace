@@ -1,24 +1,22 @@
 import ProductItem from '../ProductItem/ProductItem.tsx'
 import styles from './ProductList.module.css'
-import useGetProductList from '../../hooks/useGetProductList.ts'
-import useIntersectionObserver from '../../../../shared/hooks/useIntersectionObserver.ts'
+import useGetProductList from '../../../../entities/Product/hooks/useGetProductList.ts'
+import useIntersectionInfiniteScroll from '../../../../shared/hooks/useIntersectionInfiniteScroll.ts'
 import { MutableRefObject, useCallback } from 'react'
 
 function ProductList() {
   const {
-    data = {},
+    products,
     fetchNextPage: fetchNextProducts,
     hasNextPage,
     isLoading: isProductListLoading,
     isFetchingNextPage
   } = useGetProductList();
 
-  const intersectionRef = useIntersectionObserver({
+  const intersectionRef = useIntersectionInfiniteScroll({
     onIntersect: fetchNextProducts,
     enabled: hasNextPage && !isFetchingNextPage,
   });
-
-  const { preparedProducts: products } = data
 
   const lastProductRef = useCallback((node: HTMLLIElement | null) => {
     if (node !== null) {
@@ -30,13 +28,17 @@ function ProductList() {
     return // TODO Заменить на спиннер/скелетон
   }
 
+  if (!products.length) {
+    return null
+  }
+
   return (
     <ul className={styles.productList}>
-      {products.map((product, index) => (
+      {products.map((product) => (
         <li
           key={product.id}
           className={styles.productItem}
-          ref={index === products.length - 1 ? lastProductRef : undefined}
+          ref={lastProductRef}
         >
           <ProductItem
             {...product}

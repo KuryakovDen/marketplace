@@ -1,56 +1,51 @@
-import api from './httpClient.ts'
+import api from './httpClient.ts';
+import { LoginResponse, RegisterResponse } from '../types/api/apiTypes.ts'
 
-type ApiService = {
-  get: <T>(endpoint: string) => Promise<T>
-  create: <T>(endpoint: string, data: T) => Promise<T>
-  update: <T>(endpoint: string, data: T) => Promise<T>
-  remove: <T>(endpoint: string) => Promise<T>
-}
+class ApiService {
+  constructor(private baseUrl: string) {}
 
-const ApiService: ApiService = {
   // Метод для получения данных
-  get: async <T>(endpoint: string): Promise<T> => {
+  public async get<T>(endpoint: string): Promise<T> {
     try {
-      const { data } = await api.get(endpoint);
+      const { data } = await api.get(`${this.baseUrl}/${endpoint}`);
       return data;
     } catch (error) {
       console.error('Ошибка при GET запросе:', error);
       throw error;
     }
-  },
+  }
 
-  // Метод для создания данных
-  create: async <T>(endpoint: string, data: T): Promise<T> => {
+  public async create<T>(endpoint: string, data: T): Promise<T | LoginResponse | RegisterResponse> {
     try {
-      const response = await api.post(endpoint, data);
+      const response = await api.post(`${this.baseUrl}/${endpoint}`, data);
       return response.data;
     } catch (error) {
       console.error('Ошибка при CREATE запросе:', error);
       throw error;
     }
-  },
+  }
 
   // Метод для обновления данных
-  update: async <T>(endpoint: string, data: T): Promise<T> => {
+  public async update<T>(endpoint: string, data: T): Promise<T> {
     try {
-      const response = await api.put(endpoint, data);
+      const response = await api.put(`${this.baseUrl}/${endpoint}`, data);
       return response.data;
     } catch (error) {
       console.error('Ошибка при UPDATE запросе:', error);
       throw error;
     }
-  },
+  }
 
   // Метод для удаления данных
-  remove: async <T>(endpoint: string): Promise<T> => {
+  public async remove<T>(endpoint: string): Promise<T> {
     try {
-      const { data } = await api.delete(endpoint);
+      const { data } = await api.delete(`${this.baseUrl}/${endpoint}`);
       return data;
     } catch (error) {
       console.error('Ошибка при DELETE запросе:', error);
       throw error;
     }
-  },
-};
+  }
+}
 
 export default ApiService;
