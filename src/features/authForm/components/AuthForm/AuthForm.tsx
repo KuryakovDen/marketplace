@@ -1,25 +1,27 @@
-import { ReactNode, useState } from 'react'
-import ApiService from '../../../../shared/api/apiService.ts'
+import { useState } from 'react'
+import { authService } from '../../services/authService.ts'
+import { UserCredentials, UserRole } from '../../../../shared/types/api/apiTypes.ts'
 
 function AuthForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [role, setRole] = useState('client');
+  const [registerCredentials, setRegisterCredentials] = useState<UserCredentials>({
+    email: '', password: '', role: 'CLIENT'
+  })
+
+  const [loginCredentials, setLoginCredentials] = useState<UserCredentials>({
+    email: '', password: '', role: 'CLIENT'
+  })
+
   const [message, setMessage] = useState('');
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await ApiService.create('/auth/register', {
-        email,
-        password,
-        role,
-      });
-      // if (response.status === 201) {
-      //   setMessage('Registration successful!');
-      //   // TODO Перенаправляем на главную страницу после успешной регистрации
-      // }
+      const response = await authService.register(registerCredentials)
+      if (response.status === 201) {
+        // TODO Перенаправляем на главную страницу после успешной регистрации
+      }
     } catch (error) {
+      // TODO Сделать единую обработку ошибок
       setMessage('Registration failed: ' + error.response.data.message);
     }
   };
@@ -27,16 +29,12 @@ function AuthForm() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await ApiService('/auth/login', {
-        email,
-        password,
-      });
+      const response = authService.login(loginCredentials)
       if (response.data.access_token) {
-        // localStorage.setItem('access_token', response.data.access_token);
-        setMessage('Login successful!');
-        // Перенаправляем на главную страницу после успешного входа
+        // TODO Перенаправляем на главную страницу после успешной авторизации
       }
     } catch (error) {
+      // TODO Сделать единую обработку ошибок
       setMessage('Login failed: ' + error.response.data.message);
     }
   };
@@ -48,18 +46,20 @@ function AuthForm() {
         <input
           type="email"
           placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={registerCredentials.email}
+          onChange={(e) => setRegisterCredentials({...registerCredentials, email: e.target.value})}
           required
         />
         <input
           type="password"
           placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={registerCredentials.password}
+          onChange={(e) => setRegisterCredentials({...registerCredentials, password: e.target.value})}
           required
         />
-        <select value={role} onChange={(e) => setRole(e.target.value)}>
+        <select
+          value={registerCredentials.role}
+          onChange={(e) => setRegisterCredentials({...registerCredentials, role: e.target.value as UserRole})}>
           <option value="client">Client</option>
           <option value="admin">Admin</option>
         </select>
@@ -71,15 +71,15 @@ function AuthForm() {
         <input
           type="email"
           placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={loginCredentials.email}
+          onChange={(e) => setLoginCredentials({...loginCredentials, email: e.target.value})}
           required
         />
         <input
           type="password"
           placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={loginCredentials.password}
+          onChange={(e) => setLoginCredentials({...loginCredentials, password: e.target.value})}
           required
         />
         <button type="submit">Login</button>
