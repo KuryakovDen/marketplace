@@ -14,12 +14,10 @@ const useGetProductList = () => {
     isFetchingNextPage,
   }: UseInfiniteQueryResult<ProductListApiResponse, Error> = useInfiniteQuery<ProductListApiResponse, Error>({
     queryKey: [PRODUCT_LIST_KEY],
-    queryFn: async ({ pageParam = 1 }) => {
-      return await productApiService.search({
-        page: pageParam,
-        limit: DEFAULT_PRODUCT_LIMIT,
-      });
-    },
+    queryFn: async ({ pageParam = 1 }) => await productApiService.search({
+      page: pageParam,
+      limit: DEFAULT_PRODUCT_LIMIT,
+    }),
     getNextPageParam: (lastPage, allPages) => {
       const totalProductsLoaded = allPages.reduce((sum, page) => sum + page.products.length, 0);
       const hasNextPage = totalProductsLoaded < (lastPage.total || 0);
