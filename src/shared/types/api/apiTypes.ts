@@ -4,4 +4,10 @@ export type RegisterResponse = {
   role: string;
 }
 
-export type LoginResponse = Omit<RegisterResponse, 'role'>;
+export type RegisterParams = RegisterResponse
+
+export type LoginParams = Omit<RegisterResponse, 'role'>;
+
+export type LoginResponse = {
+  accessToken: string;
+};

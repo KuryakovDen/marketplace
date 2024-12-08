@@ -27,15 +27,15 @@ function AuthForm() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await ApiService.create('/auth/login', {
+      const response = await ApiService('/auth/login', {
         email,
         password,
       });
-      // if (response.data.access_token) {
-      //   // localStorage.setItem('access_token', response.data.access_token);
-      //   setMessage('Login successful!');
-      //   // Перенаправляем на главную страницу после успешного входа
-      // }
+      if (response.data.access_token) {
+        // localStorage.setItem('access_token', response.data.access_token);
+        setMessage('Login successful!');
+        // Перенаправляем на главную страницу после успешного входа
+      }
     } catch (error) {
       setMessage('Login failed: ' + error.response.data.message);
     }
