@@ -16,4 +16,5 @@ export type LoginResponse = {
   accessToken: string;
 };
 
-export type UserCredentials = RegisterParams;
+export type RegisterCredentials = RegisterParams;
+export type LoginCredentials = Omit<RegisterParams, 'role'>;

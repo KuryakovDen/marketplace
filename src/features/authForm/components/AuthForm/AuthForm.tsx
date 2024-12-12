@@ -1,14 +1,17 @@
 import { useState } from 'react'
 import { authService } from '../../services/authService.ts'
-import { UserCredentials, UserRole } from '../../../../shared/types/api/apiTypes.ts'
+import { RegisterCredentials, LoginCredentials, UserRole } from '../../../../shared/types/api/apiTypes.ts'
+import { useNavigate } from 'react-router-dom'
+import { AppRoute } from '../../../../shared/consts/appRoutes.ts'
 
 function AuthForm() {
-  const [registerCredentials, setRegisterCredentials] = useState<UserCredentials>({
+  const navigate = useNavigate();
+  const [registerCredentials, setRegisterCredentials] = useState<RegisterCredentials>({
     email: '', password: '', role: 'CLIENT'
   })
 
-  const [loginCredentials, setLoginCredentials] = useState<UserCredentials>({
-    email: '', password: '', role: 'CLIENT'
+  const [loginCredentials, setLoginCredentials] = useState<LoginCredentials>({
+    email: '', password: ''
   })
 
   const [message, setMessage] = useState('');
@@ -16,9 +19,10 @@ function AuthForm() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await authService.register(registerCredentials)
-      if (response.status === 201) {
-        // TODO Перенаправляем на главную страницу после успешной регистрации
+      const { message } = await authService.register(registerCredentials)
+      if (message) {
+        // TODO Показывать сообщение об успешной регистрации
+        navigate(AppRoute.Main)
       }
     } catch (error) {
       // TODO Сделать единую обработку ошибок
@@ -29,10 +33,10 @@ function AuthForm() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = authService.login(loginCredentials)
-      if (response.data.access_token) {
-        // TODO Перенаправляем на главную страницу после успешной авторизации
-      }
+      const { accessToken } = await authService.login(loginCredentials)
+      console.log(accessToken)
+      // TODO Показывать сообщение об успешной авторизации
+      navigate(AppRoute.Main)
     } catch (error) {
       // TODO Сделать единую обработку ошибок
       setMessage('Login failed: ' + error.response.data.message);
