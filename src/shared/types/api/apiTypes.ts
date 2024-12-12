@@ -1,17 +1,19 @@
 export type UserRole = 'CLIENT' | 'ADMIN'
 
-export type RegisterResponse = {
+export type RegisterParams = {
   email: string;
   password: string;
   role: UserRole;
 }
 
-export type RegisterParams = RegisterResponse
+export type RegisterResponse = {
+  message: string;
+}
 
-export type LoginParams = Omit<RegisterResponse, 'role'>;
+export type LoginParams = Omit<RegisterParams, 'role'>;
 
 export type LoginResponse = {
   accessToken: string;
 };
 
-export type UserCredentials = RegisterResponse;
+export type UserCredentials = RegisterParams;
