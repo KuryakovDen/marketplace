@@ -20,10 +20,9 @@ function AuthForm() {
     e.preventDefault();
     try {
       const { message } = await authService.register(registerCredentials)
-      if (message) {
-        // TODO Показывать сообщение об успешной регистрации
-        navigate(AppRoute.Main)
-      }
+      console.log(message)
+      // TODO Показывать сообщение об успешной регистрации
+      navigate(AppRoute.Main)
     } catch (error) {
       // TODO Сделать единую обработку ошибок
       setMessage('Registration failed: ' + error.response.data.message);
