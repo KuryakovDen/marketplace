@@ -3,9 +3,12 @@ import { authService } from '../../services/authService.ts'
 import { RegisterCredentials, LoginCredentials, UserRole } from '../../../../shared/types/api/apiTypes.ts'
 import { useNavigate } from 'react-router-dom'
 import { AppRoute } from '../../../../shared/consts/appRoutes.ts'
+import { CookiesStorage } from '../../../../shared/browserStorage/cookieStorage/cookieStorage.ts'
 
 function AuthForm() {
   const navigate = useNavigate();
+  const cookiesStorage = new CookiesStorage();
+
   const [registerCredentials, setRegisterCredentials] = useState<RegisterCredentials>({
     email: '', password: '', role: 'CLIENT'
   })
@@ -32,8 +35,9 @@ function AuthForm() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+      // TODO Сделать адаптер для полей бэкенда с snake_case
       const { accessToken } = await authService.login(loginCredentials)
-      console.log(accessToken)
+      cookiesStorage.set('accessToken', accessToken)
       // TODO Показывать сообщение об успешной авторизации
       navigate(AppRoute.Main)
     } catch (error) {
