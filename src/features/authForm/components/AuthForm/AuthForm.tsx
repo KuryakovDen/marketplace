@@ -4,6 +4,16 @@ import { RegisterCredentials, LoginCredentials, UserRole } from '../../../../sha
 import { useNavigate } from 'react-router-dom'
 import { AppRoute } from '../../../../shared/consts/appRoutes.ts'
 import { CookiesStorage } from '../../../../shared/browserStorage/cookieStorage/cookieStorage.ts'
+import Ajv from 'ajv'
+import { registerSchema } from '../../consts/registerSchema.ts'
+import { loginSchema } from '../../consts/loginSchema.ts'
+import { isValidEmail } from '../../../../shared/utils/isValidEmail.ts'
+
+const ajv = new Ajv();
+ajv.addFormat('email', {
+  type: 'string',
+  validate: (email) => isValidEmail(email as string),
+});
 
 function AuthForm() {
   const navigate = useNavigate();
@@ -21,6 +31,15 @@ function AuthForm() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+
+    const validate = ajv.compile(registerSchema);
+    const valid = validate(registerCredentials);
+
+    if (!valid) {
+      setMessage('Registration failed: ' + validate.errors?.map(err => err.message).join(', '));
+      return;
+    }
+
     try {
       const { message } = await authService.register(registerCredentials)
       console.log(message)
@@ -34,6 +53,15 @@ function AuthForm() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
+    const validate = ajv.compile(loginSchema);
+    const valid = validate(loginCredentials);
+
+    if (!valid) {
+      setMessage('Login failed: ' + validate.errors?.map(err => err.message).join(', '));
+      return;
+    }
+
     try {
       // TODO Сделать адаптер для полей бэкенда с snake_case
       const { accessToken } = await authService.login(loginCredentials)
