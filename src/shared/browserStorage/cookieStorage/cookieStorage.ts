@@ -9,10 +9,10 @@ export class CookiesStorage extends BrowserStorage {
   }
 
   set(key: string, value: string): void {
-    document.cookie = `${key}=${value}; path=/`;
+    document.cookie = `${key}=${value}`;
   }
 
   delete(key: string): void {
-    document.cookie = `${key}=; path=/;`;
+    document.cookie = `${key}=; expires=Thu, 01 Jan 1970 00:00:00 GMT;`
   }
 }
