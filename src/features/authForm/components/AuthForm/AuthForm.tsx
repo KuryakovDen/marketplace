@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { authService } from '../../services/authService.ts'
 import { RegisterCredentials, LoginCredentials, UserRole } from '../../../../shared/types/api/apiTypes.ts'
 import { useNavigate } from 'react-router-dom'
@@ -15,6 +15,13 @@ ajv.addFormat('email', {
   validate: (email) => isValidEmail(email as string),
 });
 
+// 0. разделить код на функции, компоненты, хуки и контекст
+// 1. Сделать 2 отдельные формы
+// 2. Вынести логику логина и авторизации в хук
+// 3. Сделать верстку покрасивее
+// 4. После логина редирект на главную и в хедере отображать email
+// 5. Использовать useActionState из 19 реакта 
+// 6. use(AuthContext)
 function AuthForm() {
   const navigate = useNavigate();
   const cookiesStorage = new CookiesStorage();

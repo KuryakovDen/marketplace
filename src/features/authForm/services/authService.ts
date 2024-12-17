@@ -6,12 +6,16 @@ class AuthApiService extends ApiService {
     super(baseUrl);
   }
 
-  public async register(params: RegisterParams): Promise<RegisterResponse> {
-    return super.create('register', params)
+  // public async register(params: RegisterParams): Promise<RegisterResponse> {
+  //   return super.create('register', params)
+  // }
+
+  public async register(params: RegisterParams) {
+    return super.create<RegisterResponse, RegisterParams>('register', params)
   }
 
-  public async login(params: LoginParams): Promise<LoginResponse> {
-    return super.create('login', params)
+  public async login(params: LoginParams) {
+    return super.create<LoginResponse, LoginParams>('login', params)
   }
 }
 
