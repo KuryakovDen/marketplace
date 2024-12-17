@@ -5,6 +5,7 @@ import useIntersectionInfiniteScroll from '../../../../shared/hooks/useIntersect
 import { MutableRefObject, useCallback } from 'react'
 
 function ProductList() {
+  // Нужен будетотдельный хук для фичи, так как еще будешь ходить за коризной
   const {
     products,
     fetchNextPage: fetchNextProducts,

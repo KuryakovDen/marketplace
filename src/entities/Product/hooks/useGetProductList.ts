@@ -1,4 +1,4 @@
-import { useInfiniteQuery, UseInfiniteQueryResult } from '@tanstack/react-query';
+import { InfiniteData, useInfiniteQuery } from '@tanstack/react-query';
 import { productApiService } from '../services/productService.ts'
 import { ProductListApiResponse } from '../types/productTypes.ts'
 
@@ -12,7 +12,7 @@ const useGetProductList = () => {
     hasNextPage,
     fetchNextPage,
     isFetchingNextPage,
-  }: UseInfiniteQueryResult<ProductListApiResponse, Error> = useInfiniteQuery<ProductListApiResponse, Error>({
+  } = useInfiniteQuery<ProductListApiResponse, Error, InfiniteData<ProductListApiResponse>, ['productList'], number>({
     queryKey: [PRODUCT_LIST_KEY],
     queryFn: async ({ pageParam = 1 }) => await productApiService.search({
       page: pageParam,
@@ -27,6 +27,12 @@ const useGetProductList = () => {
   });
 
   const products = data?.pages?.flatMap(page => page.products) || [];
+
+  // const products = data?.pages?.flatMap(page => {
+  //   return new Product(page.products)
+  // }) || [];
+
+  // Todo можно не класс а функцию использовать
 
   return {
     products,
